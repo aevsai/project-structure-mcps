@@ -1,4 +1,4 @@
-# project-structure-context-server
+# project-structure-mcps
 
 This module implements a Model Context Protocol server for a project structure.
 
