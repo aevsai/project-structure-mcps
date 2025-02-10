@@ -1,7 +1,7 @@
 {
-  "name": "@aevsai/example-context-server",
-  "version": "0.1.0",
-  "description": "a model context protocol server for postgres",
+  "name": "@aevsai/project-structure-mcps",
+  "version": "0.0.1",
+  "description": "a model context protocol server for project structure",
   "main": "index.mjs",
   "type": "module",
   "publishConfig": {
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zed-industries/postgres-context-server.git"
+    "url": "git+https://github.com/aevsai/postgres-context-server.git"
   },
   "author": "",
   "license": "MIT",
