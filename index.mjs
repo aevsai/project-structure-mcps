@@ -15,12 +15,12 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 
 const server = new Server({
-  name: "postgres-context-server",
+  name: "project-structure-mcps",
   version: "0.1.0",
 });
 
 const BASE_DIR = process.cwd();
-const FILE_PROMPT_NAME = "file-contents";
+const PROJECT_PROMPT_NAME = "project";
 
 // Helper function to recursively list files
 async function listFilesRecursively(dir) {
@@ -157,7 +157,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 server.setRequestHandler(CompleteRequestSchema, async (request) => {
   process.stderr.write("Handling completions/complete request\n");
 
-  if (request.params.ref.name === FILE_PROMPT_NAME) {
+  if (request.params.ref.name === PROJECT_PROMPT_NAME) {
     const fileQuery = request.params.argument.value;
     const files = await listFilesRecursively(BASE_DIR);
     return {
@@ -178,7 +178,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => {
   return {
     prompts: [
       {
-        name: FILE_PROMPT_NAME,
+        name: PROJECT_PROMPT_NAME,
         description: "Retrieve the contents of a file",
         arguments: [
           {
@@ -195,7 +195,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => {
 server.setRequestHandler(GetPromptRequestSchema, async (request) => {
   process.stderr.write("Handling prompts/get request\n");
 
-  if (request.params.name === FILE_PROMPT_NAME) {
+  if (request.params.name === PROJECT_PROMPT_NAME) {
     const path = request.params.arguments?.path;
 
     if (typeof path !== "string" || path.length === 0) {
